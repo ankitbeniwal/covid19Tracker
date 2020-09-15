@@ -46,8 +46,8 @@ public class Covid19Service {
             ArrayList<Integer> record = new ArrayList<Integer>();
             ArrayList<ArrayList<Integer>> pastRecord;
 
-            String country = row.get("Country");
-            int confirmed = Integer.parseInt(row.get("Confirmed")), recovered =Integer.parseInt(row.get("Recovered")), deaths = Integer.parseInt(row.get("Deaths"));
+            String country = row.get("Country").toLowerCase();
+            int confirmed = Integer.parseInt(row.get("Confirmed")), recovered = Integer.parseInt(row.get("Recovered")), deaths = Integer.parseInt(row.get("Deaths"));
             int dayCount = 0;
 
             countries.add(country);
@@ -76,6 +76,7 @@ public class Covid19Service {
             stats.put(country, stat);
         }
         this.allStats = stats;
+        this.allCountries = countries;
     }
 
     public HashMap<String, LocationStats> getAllStats() {

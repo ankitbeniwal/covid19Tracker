@@ -21,6 +21,22 @@ public class LocationStats {
         this.deaths = deaths;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public int getConfirmedCases() {
+        return confirmedCases;
+    }
+
+    public int getRecoveredCases() {
+        return recoveredCases;
+    }
+
+    public int getDeaths() {
+        return deaths;
+    }
+
     public int[][] getPastRecord() {
         return pastRecord;
     }
