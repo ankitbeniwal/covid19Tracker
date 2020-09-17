@@ -1,9 +1,7 @@
+install: gradle wrapper --gradle-version 4.2
 language: java
-install: skip
-
 jdk: openjdk11
 
 script:
-  - ./gradlew assemble
   - ./gradlew check
-  - ./gradlew build --scan -s
+  - ./gradlew build
