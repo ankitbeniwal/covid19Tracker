@@ -19,15 +19,21 @@ public class HomeController {
     Covid19Service covid19Service;
 
     @GetMapping("/")
-    public String index(){
+    public String index(Model model){
+        model.addAttribute("countryList", covid19Service.getAllCountries());
         return "index";
     }
 
     @GetMapping(value = "/result")
-    public String result(@RequestParam(value = "country", defaultValue = "India") String country, Model model){
+    public String result(@RequestParam(value = "country") String country, Model model){
         Set<String> allCountries = covid19Service.getAllCountries();
         System.out.print(country);
-        if(allCountries.contains(country.toLowerCase())){
+        if(country.isEmpty()){
+            model.addAttribute("error", "Please Enter a country name to search.");
+            model.addAttribute("countryList", covid19Service.getAllCountries());
+            return "index";
+        }
+        else if(allCountries.contains(country.toLowerCase())){
             System.out.print(country.toLowerCase());
             LocationStats location = (covid19Service.getAllStats()).get(country.toLowerCase());
             model.addAttribute("pastRecord",location.getPastRecord());
@@ -37,7 +43,10 @@ public class HomeController {
             model.addAttribute("deaths",location.getDeaths());
             return "result";
         }
-        model.addAttribute("error", "Country not found in our database");
-        return "error";
+        else{
+            model.addAttribute("error", "Country not found in our database!");
+            model.addAttribute("countryList", covid19Service.getAllCountries());
+            return "index";
+        }
     }
 }

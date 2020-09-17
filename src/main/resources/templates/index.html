@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
-    <title>Covid 19 Tracker</title>
+    <title>Covid 19 Trend Tracker | Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
-
-<h1>Welcome to Covid 19 Tracker</h1>
-
+<section class="hero is-fullheight is-light" >
+    <div class="hero-body  p-b-30 ">
+        <div class="container">
+            <h2 class="subtitle">
+                <span class="has-text-centered is-block has-text-white">
+                    Search using a country name
+                </span>
+            </h2>
+            <h1 class="title">
+                <span class="is-size-2 has-text-centered is-block has-text-white">Covid 19 Trend Tracker</span>
+            </h1>
+            <div class="columns is-centered">
+                <div class="column is-7">
+                    <div class="search-form">
+                        <form action="#" th:action="@{/result}" method="get">
+                            <div class="field has-addons has-shadow-field">
+                                <div class="control has-icons-left is-expanded">
+                                    <input aria-label="Country Name Text Field" type="text" name="country" id="mainSearch" placeholder="Country Name" class="input is-large" list="searchList">
+                                    <datalist id="searchList">
+                                        <option th:each="country : ${countryList}" th:value="${#strings.capitalize(country)}">
+                                    </datalist>
+                                </div>
+                                <div class="control">
+                                    <button aria-label="Search Button" type="submit" class="button is-large is-primary">
+                                        <span class="has-text-weight-semibold">Go!</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="notification is-danger" th:if="${error}">
+    <button id="close-error" class="delete"></button>
+    <p th:inline="text">[[${error}]]</p>
+</div>
+<footer class="has-background-black has-text-centered p-4 has-text-white">
+    Crafted with <span class="fas fa-heart"></span> by <a href="https://pagalprogrammer.dev">pagalprogrammer</a> | Background Photo by Ketut Subiyanto from <a href="https://www.pexels.com/photo/woman-wearing-a-face-mask-on-the-subway-and-using-her-smartphone-4429297/">Pexels</a>
+</footer>
+<script src="/scripts/main.js"></script>
 </body>
-
 </html>
