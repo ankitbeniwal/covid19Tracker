@@ -6,16 +6,16 @@
     <title>Covid 19 Trend Tracker | Error</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <link rel="stylesheet" href="/styles/error.css">
 </head>
 
-<body th:inline="text">
+<body>
 
 <main>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 align-self-center">
+        <div class="columns">
+            <div class="column has-text-center">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 800 600">
                     <g>
@@ -270,14 +270,14 @@
                     </g>
                 </svg>
             </div>
-            <div class="col-md-6 align-self-center">
-                <h1>[[${error}]]!</h1>
+            <div class="column has-text-center">
+                <h1 th:inline="text">[[${error}]]!</h1>
                 <h2>UH OH! You're lost.</h2>
                 <p>The page you are looking for does not exist.
                     How you got here is a mystery. But you can click the button below
                     to go back to the homepage.
                 </p>
-                <a th:href="@{/}"><button class="btn green">HOME</button></a>
+                <a th:href="@{/}"><button class="is-large btn green">HOME</button></a>
             </div>
         </div>
     </div>

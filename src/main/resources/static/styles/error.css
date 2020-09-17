@@ -85,14 +85,3 @@ h2 {
 .btn.green:hover:before {
     width: 100%;
 }
-
-@media screen and (max-width: 768px) {
-    body {
-        display: block;
-    }
-
-    .container {
-        margin-top: 70px;
-        margin-bottom: 70px;
-    }
-}

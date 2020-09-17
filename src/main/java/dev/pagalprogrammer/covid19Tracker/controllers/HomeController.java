@@ -27,14 +27,12 @@ public class HomeController {
     @GetMapping(value = "/result")
     public String result(@RequestParam(value = "country") String country, Model model){
         Set<String> allCountries = covid19Service.getAllCountries();
-        System.out.print(country);
         if(country.isEmpty()){
             model.addAttribute("error", "Please Enter a country name to search.");
             model.addAttribute("countryList", covid19Service.getAllCountries());
             return "index";
         }
         else if(allCountries.contains(country.toLowerCase())){
-            System.out.print(country.toLowerCase());
             LocationStats location = (covid19Service.getAllStats()).get(country.toLowerCase());
             model.addAttribute("pastRecord",location.getPastRecord());
             model.addAttribute("country",country);
