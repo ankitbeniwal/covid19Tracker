@@ -1,0 +1,9 @@
+language: java
+install: skip
+
+jdk: openjdk11
+
+script:
+  - ./gradlew assemble
+  - ./gradlew check
+  - ./gradlew build --scan -s
